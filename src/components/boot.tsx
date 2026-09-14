@@ -6,14 +6,14 @@ import { MemoryImage } from './memoryMedia';
 import { Button } from './ui';
 
 const bootChecks = [
-  'sarcasm module',
-  'bro vocabulary',
-  'questionable decision engine',
-  'independence claims',
-  'Goa memories',
-  'ability to make Souhardya overthink',
-  'random "arey yaar"',
-  "Master's degree expansion pack",
+  'bro vocabulary installed',
+  '"arey yaar" response engine online',
+  'independence mode enabled',
+  'opinion-request protocol active',
+  'Goa archive mounted',
+  'questionable decisions recovered',
+  'Souhardya-overthinking suppression module running',
+  "Master's degree expansion pack loaded",
 ];
 
 function BootPanel({ mode = 'launch' }: { mode?: 'launch' | 'inline' }) {
@@ -35,7 +35,12 @@ function BootPanel({ mode = 'launch' }: { mode?: 'launch' | 'inline' }) {
           </span>
         ))}
       </div>
-      <p className="status-line">SYSTEM STATUS: still functioning somehow.</p>
+      <p className="status-line">
+        WARNING: &quot;don&apos;t think too much&quot; has been used an unreasonable number of
+        times.
+        <br />
+        G3.EXE READY.
+      </p>
     </div>
   );
 }
@@ -83,11 +88,12 @@ export function SystemBoot() {
         <p className="archive-subject">Archive subject: Gayathri / G3 / MGK</p>
         <h1>Happy Birthday, G3.</h1>
         <p>
-          An unnecessarily elaborate website for a person who probably would have accepted a
-          WhatsApp message.
+          An unnecessarily elaborate website for someone who probably would&apos;ve been perfectly
+          happy with &quot;happy birthday bro&quot;.
         </p>
+        <p className="hero-afterthought">Unfortunately, you know me.</p>
         <a className="archive-link" href="#archives">
-          Enter the G3 Archives
+          Enter the archives
         </a>
       </div>
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { BackgroundMusic } from './components/backgroundMusic';
 import { BootGate, SystemBoot } from './components/boot';
+import { ProgressIndicator } from './components/progressIndicator';
 import {
   BirthdayFinale,
   CareBanter,
@@ -26,6 +27,7 @@ export default function App() {
   return (
     <main>
       <BackgroundMusic enabled={siteReady} visible={siteReady} />
+      <ProgressIndicator visible={siteReady} />
       <div className={`site-shell ${siteReady ? 'is-visible' : ''}`} aria-hidden={!siteReady}>
         <SystemBoot />
         <BloodMoonEgg />

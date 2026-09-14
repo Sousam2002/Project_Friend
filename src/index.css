@@ -419,6 +419,11 @@ section {
   line-height: 1.6;
 }
 
+.hero-afterthought {
+  margin-top: -0.45rem;
+  color: rgba(36, 33, 29, 0.64);
+}
+
 .archive-link {
   display: inline-flex;
   margin-top: 1.4rem;
@@ -634,6 +639,39 @@ section {
   color: #e7b17c;
 }
 
+.scenario-tabs,
+.response-row {
+  width: min(780px, 100%);
+  margin: 0 auto 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.scenario-tabs button,
+.response-row button {
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 240, 0.78);
+  color: var(--ink);
+  padding: 0.55rem 0.7rem;
+  font-family: var(--font-mono-local);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.scenario-tabs button.is-active,
+.response-row button:hover,
+.response-row button:focus-visible {
+  background: var(--navy);
+  color: var(--paper-light);
+}
+
+.from-system {
+  justify-self: center;
+  background: rgba(197, 116, 62, 0.12);
+  font-family: var(--font-mono-local);
+}
+
 .side-note {
   width: min(620px, 100%);
   margin: 2rem auto 0;
@@ -654,7 +692,7 @@ section {
 }
 
 .widgets-section {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
 }
 
@@ -681,11 +719,6 @@ section {
   line-height: 1.65;
 }
 
-.pronunciation {
-  color: var(--green);
-  font-family: var(--font-mono-local);
-}
-
 .alias-card dl {
   display: grid;
   gap: 1rem;
@@ -700,6 +733,56 @@ section {
 
 .alias-card dd {
   margin: 0;
+}
+
+.dictionary-reveals {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.dictionary-reveals button {
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 240, 0.62);
+  color: var(--ink);
+  padding: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dictionary-reveals span {
+  display: block;
+  font-family: var(--font-serif-local);
+  font-size: 1.4rem;
+}
+
+.dictionary-reveals em {
+  display: block;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  color: rgba(36, 33, 29, 0.72);
+  font-style: normal;
+  line-height: 1.6;
+  transition:
+    max-height 220ms ease,
+    margin 220ms ease;
+}
+
+.dictionary-reveals button.is-open {
+  background: rgba(255, 250, 240, 0.96);
+}
+
+.dictionary-reveals button.is-open em {
+  max-height: 8rem;
+  margin-top: 0.45rem;
+}
+
+.classified-line,
+.verification-result,
+.desk-result,
+.button-confession {
+  font-family: var(--font-mono-local);
+  font-size: 0.82rem;
 }
 
 .tiny-widget {
@@ -724,6 +807,26 @@ section {
   align-items: start;
   font-size: 0.95rem;
   line-height: 1.35;
+}
+
+.support-options {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.7rem 0;
+}
+
+.support-options label {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.verification-result {
+  margin-top: 0.8rem;
+  border-top: 1px dashed var(--line);
+  padding-top: 0.75rem;
 }
 
 .availability {
@@ -787,6 +890,46 @@ section {
   backdrop-filter: blur(10px);
 }
 
+.chapter-progress {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
+  width: min(240px, calc(100vw - 7rem));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.chapter-progress.is-visible {
+  opacity: 1;
+}
+
+.chapter-progress span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--navy);
+  font-family: var(--font-mono-local);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chapter-progress-track {
+  height: 3px;
+  background: rgba(36, 33, 29, 0.12);
+  overflow: hidden;
+}
+
+.chapter-progress-track i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--orange);
+  transform-origin: left center;
+}
+
 .moon-note {
   position: absolute;
   right: 0;
@@ -813,6 +956,54 @@ section {
 
 .menace-grid .memory-frame:nth-child(2) {
   grid-column: span 2;
+}
+
+.exhibit-card {
+  position: relative;
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.exhibit-card:nth-child(2) {
+  grid-column: span 2;
+}
+
+.exhibit-card > span {
+  position: absolute;
+  inset: auto 0.75rem 0.75rem;
+  display: grid;
+  gap: 0.2rem;
+  background: rgba(23, 36, 61, 0.88);
+  color: var(--paper-light);
+  padding: 0.65rem;
+  font-family: var(--font-mono-local);
+  font-size: 0.76rem;
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(0.45rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.exhibit-card:hover > span,
+.exhibit-card:focus-visible > span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-note {
+  width: min(820px, 100%);
+  margin: 1.4rem auto 0;
+  border-left: 2px solid var(--orange);
+  padding-left: 1rem;
+  font-family: var(--font-mono-local);
+  line-height: 1.7;
 }
 
 .evidence-video-row {
@@ -940,6 +1131,32 @@ section {
   line-height: 1.75;
 }
 
+.memory-line {
+  opacity: 0.78;
+}
+
+.archive-meta {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+  font-family: var(--font-mono-local);
+}
+
+.archive-meta div {
+  border-top: 1px dashed var(--line);
+  padding-top: 0.55rem;
+}
+
+.archive-meta dt {
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.archive-meta dd {
+  margin: 0.2rem 0 0;
+}
+
 .care-section {
   min-height: 82svh;
   display: grid;
@@ -1013,6 +1230,29 @@ section {
 .route-card p {
   margin: 0.25rem 0;
   font-family: var(--font-mono-local);
+}
+
+.major-update {
+  margin-top: 1.2rem !important;
+  color: #e7b17c;
+  font-weight: 900;
+}
+
+.timezone-widget {
+  margin-top: 0.5rem;
+  border-top: 1px dashed rgba(255, 250, 240, 0.25);
+  padding-top: 1rem;
+}
+
+.timezone-widget div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-mono-local);
+}
+
+.timezone-widget span {
+  color: #e7b17c;
 }
 
 .route-card {
@@ -1164,6 +1404,11 @@ section {
 .do-not-zone {
   position: relative;
   min-height: 72px;
+}
+
+.button-confession {
+  max-width: 420px;
+  margin: 0.8rem auto 0 !important;
 }
 
 .confetti-burst {
@@ -1416,6 +1661,17 @@ footer {
 
   .menace-grid .memory-frame:nth-child(2) {
     grid-column: auto;
+  }
+
+  .exhibit-card:nth-child(2) {
+    grid-column: auto;
+  }
+
+  .chapter-progress {
+    left: 1rem;
+    top: auto;
+    bottom: 1rem;
+    width: min(220px, calc(100vw - 2rem));
   }
 
   .chat-bubble {

@@ -1,35 +1,70 @@
-import { Moon, Sparkles, Terminal } from 'lucide-react';
+import { HelpCircle, Moon, SearchCheck, Sparkles, Terminal } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 import { Button } from './ui';
 
 export function G3Dictionary() {
+  const entries = [
+    {
+      term: 'weak independent',
+      detail: "Someone who absolutely does not need help but may still ask: 'is this fine?'",
+    },
+    {
+      term: 'MGK',
+      detail: 'Meaning classified. If you know, you know.',
+    },
+    {
+      term: "don't think too much",
+      detail: "Gayathri's solution to approximately 84% of Souhardya's problems.",
+    },
+    {
+      term: 'bro',
+      detail: 'noun / pronoun / punctuation / emotional support mechanism',
+    },
+  ];
+  const [openEntry, setOpenEntry] = useState(entries[0].term);
+
   return (
     <section className="dictionary-grid" aria-label="G3 dictionary and small diagnostics">
       <article className="paper-card dictionary-card">
         <p className="mono-label">G3 Dictionary</p>
-        <h3>weak independent</h3>
-        <p className="pronunciation">/week in-di-pen-dent/</p>
-        <p>
-          noun. Someone who insists she does not need help while simultaneously asking:
-          <br />
-          <strong>&quot;is this caption fine?&quot;</strong>
-        </p>
+        <div className="dictionary-reveals">
+          {entries.map((entry) => (
+            <button
+              type="button"
+              key={entry.term}
+              className={openEntry === entry.term ? 'is-open' : ''}
+              onClick={() => setOpenEntry(entry.term)}
+            >
+              <span>{entry.term}</span>
+              <em>{entry.detail}</em>
+            </button>
+          ))}
+        </div>
       </article>
 
       <article className="paper-card alias-card">
-        <p className="mono-label">ARCHIVE SUBJECT</p>
+        <p className="mono-label">G3 DOSSIER</p>
         <h3>Gayathri</h3>
         <dl>
           <div>
-            <dt>Aliases</dt>
-            <dd>G3, MGK, Bro, Brother, &quot;Arey yaar&quot;</dd>
+            <dt>Known aliases</dt>
+            <dd>G3, MGK, Bro, Brother, Madame</dd>
           </div>
           <div>
-            <dt>Status</dt>
-            <dd>International expansion pending.</dd>
+            <dt>Current patch</dt>
+            <dd>USC / Los Angeles</dd>
+          </div>
+          <div>
+            <dt>Default response</dt>
+            <dd>&quot;don&apos;t think too much&quot;</dd>
+          </div>
+          <div>
+            <dt>Core traits</dt>
+            <dd>independent, opinionated, chaotic, caring, occasionally sensible</dd>
           </div>
         </dl>
+        <p className="classified-line">Classification accuracy disputed by subject.</p>
       </article>
 
       <article className="paper-card tiny-widget">
@@ -92,6 +127,67 @@ function AppointmentPortal() {
   );
 }
 
+function AuthenticityCheck() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <article className="paper-card tiny-widget">
+      <p className="mono-label">AUTHENTICITY VERIFICATION</p>
+      <p>G3: &quot;yeh bhi google se?&quot;</p>
+      <Button type="button" variant="outline" onClick={() => setChecked(true)}>
+        <SearchCheck aria-hidden="true" />
+        Check
+      </Button>
+      {checked ? (
+        <div className="verification-result">
+          <p>Originality: questionable</p>
+          <p>Intent: genuine</p>
+          <p>Overthinking: confirmed</p>
+          <p>Google involvement: classified</p>
+          <strong>Sentiment was original. Souhardya maintains this formally.</strong>
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+function SupportDesk() {
+  const [submitted, setSubmitted] = useState(false);
+  const issues = [
+    'need text reviewed',
+    'office drama',
+    'need ride',
+    'existential confusion',
+    'is this fine?',
+    'miscellaneous bro emergency',
+  ];
+
+  return (
+    <article className="paper-card tiny-widget">
+      <p className="mono-label">G3 SUPPORT DESK</p>
+      <h3>Need help?</h3>
+      <div className="support-options">
+        {issues.map((issue) => (
+          <label key={issue}>
+            <input type="radio" name="support-issue" />
+            <span>{issue}</span>
+          </label>
+        ))}
+      </div>
+      <Button type="button" variant="outline" onClick={() => setSubmitted(true)}>
+        <HelpCircle aria-hidden="true" />
+        Submit
+      </Button>
+      {submitted ? (
+        <p className="desk-result">
+          TICKET RECEIVED. Assigned agent: Souhardya. Estimated response time: immediately, followed
+          by unnecessary detail.
+        </p>
+      ) : null}
+    </article>
+  );
+}
+
 export function BloodMoonEgg() {
   const [open, setOpen] = useState(false);
 
@@ -122,6 +218,8 @@ export function SmallWidgets() {
     <section className="widgets-section">
       <OverthinkButton />
       <AppointmentPortal />
+      <AuthenticityCheck />
+      <SupportDesk />
       <article className="paper-card tiny-widget">
         <p className="mono-label">G3 INTERNATIONAL FINANCIAL SERVICES</p>
         <p>Original loan: Rs [redacted]</p>
@@ -144,8 +242,8 @@ export function DoNotPress() {
   const copy = [
     'Do not press',
     'I literally said do not.',
-    'Bro.',
-    'G3 behavior detected.',
+    'Brother.',
+    'You have always had boundary issues with buttons.',
     'Fine.',
   ];
   const label = copy[Math.min(presses, copy.length - 1)];
@@ -158,11 +256,16 @@ export function DoNotPress() {
         {label}
       </Button>
       {presses >= 4 ? (
-        <div className="confetti-burst" aria-hidden="true">
-          {confetti.map((piece) => (
-            <span key={piece} style={{ '--i': piece } as React.CSSProperties} />
-          ))}
-        </div>
+        <>
+          <div className="confetti-burst" aria-hidden="true">
+            {confetti.map((piece) => (
+              <span key={piece} style={{ '--i': piece } as React.CSSProperties} />
+            ))}
+          </div>
+          <p className="button-confession">
+            Happy Birthday, idiot. That is the only heart you are getting. Do not make this weird.
+          </p>
+        </>
       ) : null}
     </div>
   );

@@ -143,7 +143,7 @@ export const photos: PhotoMemory[] = [
     mood: 'casual',
     aspect: 'portrait',
     priority: false,
-    caption: 'Another unnecessarily long conversation was probably loading.',
+    caption: 'Office dress code violation: G3 decided I needed lipstick.',
   },
   {
     id: 'office-peace-signs',
@@ -174,7 +174,7 @@ export const photos: PhotoMemory[] = [
     mood: 'chaotic',
     aspect: 'landscape',
     priority: false,
-    caption: 'Evidence submitted without context.',
+    caption: 'Child detected. G3 attention successfully hijacked.',
   },
   {
     id: 'hoodie-portrait-one',
@@ -231,7 +231,7 @@ export const photos: PhotoMemory[] = [
     mood: 'chaotic',
     aspect: 'portrait',
     priority: false,
-    caption: 'Source: trust me bro.',
+    caption: 'POV: I was told to pose cute. I was not given a choice.',
   },
   {
     id: 'solo-red',
